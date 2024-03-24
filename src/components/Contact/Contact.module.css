@@ -1,0 +1,46 @@
+/* Contact.module.css */
+/* .contact {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact .name {
+  font-weight: bold;
+}
+
+.contact .delete-btn {
+  background-color: #ef8636;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+ */
+/* Contact.module.css */
+
+.contact {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-name {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.contact-number {
+  color: #666;
+  margin-right: 5px; /* Додатковий стиль для номеру */
+}
