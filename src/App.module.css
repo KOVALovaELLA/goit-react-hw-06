@@ -1,0 +1,12 @@
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+h1 {
+  display: flex;
+  font-size: 40px;
+  color: black;
+  justify-content: center;
+}

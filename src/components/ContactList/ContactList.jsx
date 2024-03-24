@@ -1,40 +1,30 @@
-/* ContactList.jsx */
-
-/* import React from "react";
-import Contact from "../Contact/Contact";
-import styles from "./ContactList.module.css";
-
-const ContactList = ({ contacts, onDeleteContact }) => {
-  return (
-    <ul className={styles.list}>
-      {contacts.map((contact) => (
-        <Contact
-          key={contact.id}
-          contact={contact}
-          onDeleteContact={onDeleteContact}
-        />
-      ))}
-    </ul>
-  );
-};
-
-export default ContactList; */
-/* ContactList.jsx */
-
 import { useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
-import styles from "./ContactList.module.css";
+import css from "./ContactList.module.css";
 
-const ContactList = () => {
-  const contacts = useSelector((state) => state.contacts.items);
+export default function ContactList() {
+  const contacts = useSelector((state) => {
+    const filter = state.filters.text;
+    if (filter) {
+      return state.contacts.items.filter((contact) =>
+        contact.name.toLowerCase().includes(filter.toLowerCase())
+      );
+    } else {
+      return state.contacts.items;
+    }
+  });
 
   return (
-    <ul className={styles.list}>
+    <ul className={css.list}>
       {contacts.map((contact) => (
-        <Contact key={contact.id} contact={contact} />
+        <li className={css.item} key={contact.id}>
+          <Contact
+            name={contact.name}
+            number={contact.number}
+            id={contact.id}
+          />
+        </li>
       ))}
     </ul>
   );
-};
-
-export default ContactList;
+}
