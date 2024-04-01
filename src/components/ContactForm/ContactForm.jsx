@@ -1,14 +1,14 @@
-/* ContactForm.jsx */
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
 import { useId } from "react";
+import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { addContacts } from "../../redux/contactsSlice";
 import css from "./ContactForm.module.css";
+import { addContact } from "../../redux/contactsOps";
 
 export default function ContactForm() {
   const nameFieldId = useId();
   const numberFieldId = useId();
+
   const dispatch = useDispatch();
 
   const validationSchema = Yup.object({
@@ -17,10 +17,10 @@ export default function ContactForm() {
   });
 
   const handleAdd = (values, actions) => {
-    dispatch(addContacts(values));
+    const { name, number } = values;
+    dispatch(addContact({ name, number }));
     actions.resetForm();
   };
-
   return (
     <Formik
       initialValues={{ name: "", number: "" }}

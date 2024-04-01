@@ -1,15 +1,12 @@
-/* Contact.jsx */
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
-import css from "./Contact.module.css";
 import { useDispatch } from "react-redux";
-import { deleteContacts } from "../../redux/contactsSlice";
+import css from "./Contact.module.css";
+import { deleteContact } from "../../redux/contactsOps";
 
-export default function Contact({ name, number, id }) {
+export default function Contact({ number, name, id }) {
   const dispatch = useDispatch();
-  const handleDelete = () => {
-    dispatch(deleteContacts(id));
-  };
+
   return (
     <div className={css.box}>
       <div>
@@ -22,7 +19,12 @@ export default function Contact({ name, number, id }) {
           {number}
         </p>
       </div>
-      <button className={css.button} onClick={handleDelete}>
+      <button
+        className={css.button}
+        onClick={() => {
+          dispatch(deleteContact(id));
+        }}
+      >
         Delete
       </button>
     </div>
